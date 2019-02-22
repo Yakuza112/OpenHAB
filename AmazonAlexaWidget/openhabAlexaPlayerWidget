@@ -1,0 +1,121 @@
+<style>
+img {
+  width:100%;
+}
+
+.rnp-main-table {
+  width: 100%;
+  height: 100%;
+}
+
+.rnp-main-table tr {
+  width: 100%;
+}
+
+.rnp-main-table td {
+  border: 0px solid white;
+}
+
+.rnp-image-td {
+  height: 10vw;
+}
+
+.rnp-title-td {
+  height: 0.1vw;
+  font-size: 1.5vw;
+}
+
+.rnp-btn-pad {
+  padding:20px 32px;
+}
+  
+.rnp-btn-radius {
+  padding:10px 10px;
+  border-radius: 50%;!important
+  background-color: #d23f31;
+  height: 56px;
+  width: 56px;
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+  box-sizing: content-box;
+  margin-left:-13px;
+  position: relative;
+  z-index:1000;
+  cursor:pointer;
+}
+.rnp-glyphicon-text {
+  font-size: xx-large;
+  padding: 10px 0 0 5px;
+}
+.rnp-btn-lf {
+  position: relative;
+  top: -10px;
+  left: 8px;
+  background-color:#ddd;
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+  color:#000;
+  cursor:pointer;
+}
+.rnp-btn-lf:hover {
+  background-color:#777;
+  color:#ffaa00;
+}
+.rnp-btn-rt {
+  position: relative;
+  top: -10px;
+  right: 8px;
+  margin-left:-13px;
+  background-color:#ddd;
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+  color:#000;
+  cursor:pointer;
+}
+.rnp-btn-rt:hover {
+  background-color:#777;
+  color:#ffaa00;
+}
+.rnp-name-text{
+  text-align: center;
+  display:block;
+}
+.rnp-title-text{
+  font-size: x-large;
+  text-align: center;
+  display:block;
+}
+.rnp-div-slider{
+  width:220px;
+  margin:0 auto;
+}
+.rnp-btn-orange {
+  background-color: #FFAA00;
+}
+.rnp-btn-blue {
+  background-color: #0DB9F0;
+}
+</style>
+
+<table class="rnp-main-table">
+  <tr>
+    <td ng-if="config.showart == true && itemValue(config.albumArt)!='NULL' && itemValue(config.albumArt)!='raw type: 17464 bytes'" class="rnp-image-td"><img ng-src="{{itemValue(config.albumArt)}}" src="{{itemValue(config.albumArt)}}" height="300px" aria-hidden="false"/></td>
+    <td ng-if="config.showart == true && itemValue(config.albumArt)=='NULL'" class="rnp-image-td"><img ng-src="" src="" height="300px" aria-hidden="false"/></td>
+    <td ng-if="config.showart == true && itemValue(config.albumArt)=='raw type: 17464 bytes'" class="rnp-image-td">-- Loading Image --</td>
+  </tr>
+  <tr>
+    <td ng-if="itemValue(config.title)!='NULL'" align="center">{{itemValue(config.title)}}</td>
+    <td ng-if="itemValue(config.title)=='NULL'">-</td>
+  </tr>
+  <tr>
+    <td>
+  	  <div class="rnp-btn-group" align="center">
+    	  <label class="rnp-btn-pad rnp-btn-lf"
+           	ng-click="sendCmd(config.control,'PREVIOUS')"><i class="glyphicon glyphicon-step-backward"></i></label>
+  		  <label class="rnp-btn-blue rnp-btn-radius btn-info" ng-if="itemValue(config.control) !='PLAY'"
+            ng-click="sendCmd(config.control,'PLAY')"><i class="glyphicon glyphicon-play rnp-glyphicon-text"></i></label>
+    		<label class="rnp-btn-orange rnp-btn-radius btn-warning" ng-if="itemValue(config.control) =='PLAY'"
+            ng-click="sendCmd(config.control,'PAUSE')"><i class="glyphicon glyphicon-pause rnp-glyphicon-text"></i></label>
+    		<label class="rnp-btn-pad rnp-btn-rt"
+            ng-click="sendCmd(config.control,'NEXT')"><i class="glyphicon glyphicon-step-forward"></i></label>
+  	  </div>
+    </td>
+  </tr>
+</table>
