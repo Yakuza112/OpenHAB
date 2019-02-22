@@ -1,0 +1,1 @@
+https://github.com/BasvanH/habpanel-widget-openweathermap
